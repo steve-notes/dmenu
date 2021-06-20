@@ -1,3 +1,11 @@
+/**
+ * File              : drw.c
+ * License           : MIT
+ * Author            : Steven Agustinus <steven87.ags@gmail.com>
+ * Date              : 20.06.2021
+ * Last Modified Date: 20.06.2021
+ * Last Modified By  : Steven Agustinus <steven87.ags@gmail.com>
+ */
 /* See LICENSE file for copyright and license details. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -140,11 +148,12 @@ xfont_create(Drw *drw, const char *fontname, FcPattern *fontpattern)
 	 * https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=916349
 	 * and lots more all over the internet.
 	 */
-	FcBool iscol;
-	if(FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) == FcResultMatch && iscol) {
-		XftFontClose(drw->dpy, xfont);
-		return NULL;
-	}
+	/*uncomment this if you don't want to use color emoji in dmenu */
+	/*FcBool iscol;*/
+	/*if(FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) == FcResultMatch && iscol) {*/
+		/*XftFontClose(drw->dpy, xfont);*/
+		/*return NULL;*/
+	/*}*/
 
 	font = ecalloc(1, sizeof(Fnt));
 	font->xfont = xfont;
