@@ -10,6 +10,8 @@
 /* Default settings; can be overriden by command line. */
 
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+static const unsigned int alpha = 0xf0; /* this line from dmenu_alpha_patch */
+
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static int colorprompt = 1;                /* -p  option; if 1, prompt uses SchemeSel, otherwise SchemeNorm */
 static int centered = 0;                    /* -c option; centers dmenu on screen */
@@ -25,6 +27,15 @@ static const char *colors[SchemeLast][2] = {
 	[SchemeOut] = { "#000000", "#00ffff" },
 /*	[SchemeMid] = { "#eeeeee", "#770000" },*/  /* uncomment if want to use morecolors patch */
 };
+
+/* this part from dmenu_alpha_patch */
+static const unsigned int alphas[SchemeLast][2] = {
+	[SchemeNorm] = { alpha, alpha },
+	[SchemeSel] = { alpha, alpha },
+	[SchemeOut] = { alpha, alpha },
+};
+/* this part from dmenu_alpha_patch */
+
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
 /* -h option; minimum height of a menu line */
